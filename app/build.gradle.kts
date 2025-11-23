@@ -75,6 +75,7 @@ android {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-DEBUG"
             resValue("string","app_name","ReTerminal-Debug")
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 
