@@ -13,7 +13,7 @@ import android.provider.DocumentsContract
 import android.provider.DocumentsProvider
 import android.util.Log
 import android.webkit.MimeTypeMap
-import com.rk.libcommons.alpineHomeDir
+import com.rk.libcommons.debianHomeDir
 import com.rk.resources.getString
 import com.rk.resources.strings
 import java.io.File
@@ -24,7 +24,7 @@ import java.util.LinkedList
 import java.util.Locale
 import com.rk.terminal.R
 
-class AlpineDocumentProvider : DocumentsProvider() {
+class DebianDocumentProvider : DocumentsProvider() {
     override fun queryRoots(projection: Array<String>?): Cursor {
         val result = MatrixCursor(
             projection
@@ -61,7 +61,7 @@ class AlpineDocumentProvider : DocumentsProvider() {
     override fun queryChildDocuments(
         parentDocumentId: String,
         projection: Array<String>?,
-        sortOrder: String?  // Changed from non-nullable to nullable
+        sortOrder: String?  // Nullable to match DocumentsProvider interface in newer Android APIs
     ): Cursor {
         val result = MatrixCursor(
             projection
@@ -172,7 +172,7 @@ class AlpineDocumentProvider : DocumentsProvider() {
             // through the whole SD card).
             var isInsideHome: Boolean
             try {
-                isInsideHome = file.canonicalPath.startsWith(alpineHomeDir().canonicalPath)
+                isInsideHome = file.canonicalPath.startsWith(debianHomeDir().canonicalPath)
             } catch (e: IOException) {
                 isInsideHome = true
             }
@@ -238,7 +238,7 @@ class AlpineDocumentProvider : DocumentsProvider() {
 
     companion object {
         fun isDocumentProviderEnabled(context: Context): Boolean {
-            val componentName = ComponentName(context, AlpineDocumentProvider::class.java)
+            val componentName = ComponentName(context, DebianDocumentProvider::class.java)
             val state = context.packageManager.getComponentEnabledSetting(componentName)
             return state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED ||
                     state == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT
@@ -248,7 +248,7 @@ class AlpineDocumentProvider : DocumentsProvider() {
             if (isDocumentProviderEnabled(context) == enabled) {
                 return
             }
-            val componentName = ComponentName(context, AlpineDocumentProvider::class.java)
+            val componentName = ComponentName(context, DebianDocumentProvider::class.java)
             val newState = if (enabled)
                 PackageManager.COMPONENT_ENABLED_STATE_ENABLED
             else
@@ -264,7 +264,7 @@ class AlpineDocumentProvider : DocumentsProvider() {
 
         private const val ALL_MIME_TYPES = "*/*"
 
-        private val BASE_DIR = alpineHomeDir()
+        private val BASE_DIR = debianHomeDir()
 
         // The default columns to return information about a root if no specific
         // columns are requested in a query.

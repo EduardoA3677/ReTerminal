@@ -7,7 +7,30 @@ Download the latest APK from the [Releases Section](https://github.com/RohitKush
 - [x] Basic Terminal
 - [x] Virtual Keys
 - [x] Multiple Sessions
-- [x] Alpine Linux support
+- [x] Debian Linux support (via proot)
+- [x] Access to thousands of packages via apt
+- [x] Multiple architecture support (x86_64, arm64, armhf)
+
+# Debian Linux Environment
+ReTerminal now includes a full Debian Trixie environment running in a proot container. This provides:
+- **Full GNU/Linux environment** with glibc
+- **APT package manager** - Install thousands of packages
+- **Bash shell** - Full bash scripting support
+- **Development tools** - Python, Node.js, Git, and more
+
+For detailed information about the Debian environment, see [DEBIAN_MIGRATION.md](DEBIAN_MIGRATION.md).
+
+## Quick Start with Debian
+```bash
+# Update package lists
+apt update
+
+# Install your favorite tools
+apt install python3 git vim htop
+
+# Start coding!
+python3 --version
+```
 
 # Screenshots
 <div>
