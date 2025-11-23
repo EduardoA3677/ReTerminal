@@ -47,8 +47,13 @@ apk add $missing_packages
 ```bash
 export DEBIAN_FRONTEND=noninteractive
 required_packages="bash nano"
+
+# Get installed packages list once for efficiency
+installed_packages=$(dpkg -l 2>/dev/null)
+
+missing_packages=""
 for pkg in $required_packages; do
-    if ! dpkg -l | grep -q "^ii  $pkg "; then
+    if ! echo "$installed_packages" | grep -q "^ii  $pkg "; then
         missing_packages="$missing_packages $pkg"
     fi
 done
@@ -59,10 +64,11 @@ apt-get install -y $missing_packages
 
 **Key Changes**:
 - Removed Alpine-specific packages: `gcompat`, `glib`
-- Changed package check from `apk info -e` to `dpkg -l`
+- Changed package check from `apk info -e` to `dpkg -l` (cached for efficiency)
 - Changed package manager from `apk` to `apt-get`
 - Added `DEBIAN_FRONTEND=noninteractive` for automated installs
 - Changed default shell from `/bin/ash` to `/bin/bash`
+- Optimized package checking by caching dpkg output
 
 #### init-host.sh Changes
 **File**: `core/main/src/main/assets/init-host.sh`
