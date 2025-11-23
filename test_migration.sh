@@ -52,16 +52,16 @@ fi
 
 echo ""
 echo "Test 3: Check Downloader.kt for correct URLs..."
-if grep -q "debian.tar.gz" core/main/src/main/java/com/rk/terminal/ui/screens/downloader/Downloader.kt; then
-    report_success "Downloader.kt references debian.tar.gz"
+if grep -q "debian.tar.xz" core/main/src/main/java/com/rk/terminal/ui/screens/downloader/Downloader.kt; then
+    report_success "Downloader.kt references debian.tar.xz"
 else
-    report_error "Downloader.kt doesn't reference debian.tar.gz"
+    report_error "Downloader.kt doesn't reference debian.tar.xz"
 fi
 
-if grep -q "debian-bookworm" core/main/src/main/java/com/rk/terminal/ui/screens/downloader/Downloader.kt; then
-    report_success "Downloader.kt uses Debian Bookworm URLs"
+if grep -q "debian-artifacts" core/main/src/main/java/com/rk/terminal/ui/screens/downloader/Downloader.kt; then
+    report_success "Downloader.kt uses Debian artifacts URLs"
 else
-    report_error "Downloader.kt doesn't use Debian Bookworm URLs"
+    report_error "Downloader.kt doesn't use Debian artifacts URLs"
 fi
 
 if grep -q "alpinelinux.org" core/main/src/main/java/com/rk/terminal/ui/screens/downloader/Downloader.kt; then
@@ -140,10 +140,10 @@ else
     report_error "init-host.sh doesn't use DEBIAN_DIR variable"
 fi
 
-if grep -q "debian.tar.gz" core/main/src/main/assets/init-host.sh; then
-    report_success "init-host.sh references debian.tar.gz"
+if grep -q "debian.tar.xz" core/main/src/main/assets/init-host.sh; then
+    report_success "init-host.sh references debian.tar.xz"
 else
-    report_error "init-host.sh doesn't reference debian.tar.gz"
+    report_error "init-host.sh doesn't reference debian.tar.xz"
 fi
 
 if grep -q "/local/alpine" core/main/src/main/assets/init-host.sh; then
@@ -180,10 +180,10 @@ fi
 
 echo ""
 echo "Test 10: Check Rootfs.kt..."
-if grep -q "debian.tar.gz" core/main/src/main/java/com/rk/terminal/ui/screens/terminal/Rootfs.kt; then
-    report_success "Rootfs.kt checks for debian.tar.gz"
+if grep -q "debian.tar.xz" core/main/src/main/java/com/rk/terminal/ui/screens/terminal/Rootfs.kt; then
+    report_success "Rootfs.kt checks for debian.tar.xz"
 else
-    report_error "Rootfs.kt doesn't check for debian.tar.gz"
+    report_error "Rootfs.kt doesn't check for debian.tar.xz"
 fi
 
 if grep -q "alpine.tar.gz" core/main/src/main/java/com/rk/terminal/ui/screens/terminal/Rootfs.kt; then

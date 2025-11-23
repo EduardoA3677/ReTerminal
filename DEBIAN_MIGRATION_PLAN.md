@@ -9,9 +9,9 @@ This document outlines the complete migration from Alpine Linux to Debian Linux 
 ### 1. Download URLs (Downloader.kt)
 - **Changed**: Updated rootfs download URLs from Alpine minirootfs to Debian Bookworm
 - **Details**: 
-  - x86_64: Using Debian Bookworm AMD64 from termux/proot-distro
-  - arm64-v8a: Using Debian Bookworm ARM64 from termux/proot-distro
-  - armeabi-v7a: Using Debian Bookworm ARMHF from termux/proot-distro
+  - x86_64: Using Debian Bookworm AMD64 from debuerreotype/docker-debian-artifacts
+  - arm64-v8a: Using Debian Bookworm ARM64 from debuerreotype/docker-debian-artifacts
+  - armeabi-v7a: Using Debian Bookworm ARMHF from debuerreotype/docker-debian-artifacts
 - **File format**: Changed from `.tar.gz` (Alpine) to `.tar.xz` (Debian)
 
 ### 2. File System Structure (FileUtil.kt)
@@ -42,7 +42,7 @@ This document outlines the complete migration from Alpine Linux to Debian Linux 
 - **Changed**: Directory names and paths
   - `ALPINE_DIR` → `DEBIAN_DIR`
   - `/local/alpine` → `/local/debian`
-  - `alpine.tar.gz` → `debian.tar.gz`
+  - `alpine.tar.gz` → `debian.tar.xz`
 
 #### init.sh
 - **Changed**: Package manager and shell
@@ -87,7 +87,7 @@ This document outlines the complete migration from Alpine Linux to Debian Linux 
 3. Observe the download progress
 
 **Expected Results:**
-- App downloads `debian.tar.gz` (instead of `alpine.tar.gz`)
+- App downloads `debian.tar.xz` (instead of `alpine.tar.gz`)
 - Download completes successfully
 - Files extracted to `/data/data/com.rk.terminal/local/debian/`
 
