@@ -45,7 +45,7 @@ fun Downloader(
             val filesToDownload = listOf(
                 "libtalloc.so.2" to abiMap[abi]!!.talloc,
                 "proot" to abiMap[abi]!!.proot,
-                "alpine.tar.gz" to abiMap[abi]!!.alpine
+                "debian.tar.gz" to abiMap[abi]!!.debian
             ).map { (name, url) -> DownloadFile(url, Rootfs.reTerminal.child(name)) }
 
             needsDownload = filesToDownload.any { !it.outputFile.exists() }
@@ -145,18 +145,18 @@ private val abiMap = mapOf(
     "x86_64" to AbiUrls(
         talloc = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/x86_64/libtalloc.so.2",
         proot = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/x86_64/proot",
-        alpine = "https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/x86_64/alpine-minirootfs-3.21.0-x86_64.tar.gz"
+        debian = "https://github.com/termux/proot-distro/releases/download/v4.20.0/debian-bookworm-amd64-pd-v4.20.0.tar.xz"
     ),
     "arm64-v8a" to AbiUrls(
         talloc = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/aarch64/libtalloc.so.2",
         proot = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/aarch64/proot",
-        alpine = "https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/aarch64/alpine-minirootfs-3.21.0-aarch64.tar.gz"
+        debian = "https://github.com/termux/proot-distro/releases/download/v4.20.0/debian-bookworm-arm64-pd-v4.20.0.tar.xz"
     ),
     "armeabi-v7a" to AbiUrls(
         talloc = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/arm/libtalloc.so.2",
         proot = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/arm/proot",
-        alpine = "https://dl-cdn.alpinelinux.org/alpine/v3.21/releases/armhf/alpine-minirootfs-3.21.0-armhf.tar.gz"
+        debian = "https://github.com/termux/proot-distro/releases/download/v4.20.0/debian-bookworm-armhf-pd-v4.20.0.tar.xz"
     )
 )
 
-private data class AbiUrls(val talloc: String, val proot: String, val alpine: String)
+private data class AbiUrls(val talloc: String, val proot: String, val debian: String)
