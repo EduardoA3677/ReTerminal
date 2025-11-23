@@ -1,9 +1,9 @@
-ALPINE_DIR=$PREFIX/local/alpine
+DEBIAN_DIR=$PREFIX/local/debian
 
-mkdir -p $ALPINE_DIR
+mkdir -p $DEBIAN_DIR
 
-if [ -z "$(ls -A "$ALPINE_DIR" | grep -vE '^(root|tmp)$')" ]; then
-    tar -xf "$PREFIX/files/alpine.tar.gz" -C "$ALPINE_DIR"
+if [ -z "$(ls -A "$DEBIAN_DIR" | grep -vE '^(root|tmp)$')" ]; then
+    tar -xf "$PREFIX/files/debian.tar.xz" -C "$DEBIAN_DIR"
 fi
 
 [ ! -e "$PREFIX/local/bin/proot" ] && cp "$PREFIX/files/proot" "$PREFIX/local/bin"
@@ -59,13 +59,13 @@ fi
 ARGS="$ARGS -b $PREFIX"
 ARGS="$ARGS -b /sys"
 
-if [ ! -d "$PREFIX/local/alpine/tmp" ]; then
- mkdir -p "$PREFIX/local/alpine/tmp"
- chmod 1777 "$PREFIX/local/alpine/tmp"
+if [ ! -d "$PREFIX/local/debian/tmp" ]; then
+ mkdir -p "$PREFIX/local/debian/tmp"
+ chmod 1777 "$PREFIX/local/debian/tmp"
 fi
-ARGS="$ARGS -b $PREFIX/local/alpine/tmp:/dev/shm"
+ARGS="$ARGS -b $PREFIX/local/debian/tmp:/dev/shm"
 
-ARGS="$ARGS -r $PREFIX/local/alpine"
+ARGS="$ARGS -r $PREFIX/local/debian"
 ARGS="$ARGS -0"
 ARGS="$ARGS --link2symlink"
 ARGS="$ARGS --sysvipc"
