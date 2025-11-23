@@ -45,7 +45,7 @@ fun Downloader(
             val filesToDownload = listOf(
                 "libtalloc.so.2" to abiMap[abi]!!.talloc,
                 "proot" to abiMap[abi]!!.proot,
-                "debian.tar.gz" to abiMap[abi]!!.debian
+                "debian.tar.xz" to abiMap[abi]!!.debian
             ).map { (name, url) -> DownloadFile(url, Rootfs.reTerminal.child(name)) }
 
             needsDownload = filesToDownload.any { !it.outputFile.exists() }
@@ -145,17 +145,17 @@ private val abiMap = mapOf(
     "x86_64" to AbiUrls(
         talloc = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/x86_64/libtalloc.so.2",
         proot = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/x86_64/proot",
-        debian = "https://github.com/termux/proot-distro/releases/download/v4.20.0/debian-bookworm-amd64-pd-v4.20.0.tar.xz"
+        debian = "https://github.com/termux/proot-distro/releases/download/v4.29.0/debian-trixie-x86_64-pd-v4.29.0.tar.xz"
     ),
     "arm64-v8a" to AbiUrls(
         talloc = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/aarch64/libtalloc.so.2",
         proot = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/aarch64/proot",
-        debian = "https://github.com/termux/proot-distro/releases/download/v4.20.0/debian-bookworm-arm64-pd-v4.20.0.tar.xz"
+        debian = "https://github.com/termux/proot-distro/releases/download/v4.29.0/debian-trixie-aarch64-pd-v4.29.0.tar.xz"
     ),
     "armeabi-v7a" to AbiUrls(
         talloc = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/arm/libtalloc.so.2",
         proot = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/arm/proot",
-        debian = "https://github.com/termux/proot-distro/releases/download/v4.20.0/debian-bookworm-armhf-pd-v4.20.0.tar.xz"
+        debian = "https://github.com/termux/proot-distro/releases/download/v4.29.0/debian-trixie-arm-pd-v4.29.0.tar.xz"
     )
 )
 

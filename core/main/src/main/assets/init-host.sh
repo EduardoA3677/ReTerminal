@@ -3,7 +3,7 @@ DEBIAN_DIR=$PREFIX/local/debian
 mkdir -p $DEBIAN_DIR
 
 if [ -z "$(ls -A "$DEBIAN_DIR" | grep -vE '^(root|tmp)$')" ]; then
-    tar -xf "$PREFIX/files/debian.tar.gz" -C "$DEBIAN_DIR"
+    tar -xf "$PREFIX/files/debian.tar.xz" -C "$DEBIAN_DIR"
 fi
 
 [ ! -e "$PREFIX/local/bin/proot" ] && cp "$PREFIX/files/proot" "$PREFIX/local/bin"
