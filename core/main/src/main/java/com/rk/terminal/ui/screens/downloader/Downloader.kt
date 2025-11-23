@@ -141,6 +141,9 @@ private suspend fun downloadFile(url: String, outputFile: File, onProgress: (Lon
     }
 }
 
+// URLs for downloading required files per architecture
+// Note: Debian version is pinned to v4.26.0 for stability. 
+// Newer versions should be tested before updating to ensure compatibility.
 private val abiMap = mapOf(
     "x86_64" to AbiUrls(
         talloc = "https://raw.githubusercontent.com/Xed-Editor/Karbon-PackagesX/main/x86_64/libtalloc.so.2",

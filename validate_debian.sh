@@ -147,7 +147,7 @@ echo ""
 
 # Test 11: Package Installation (Optional - requires network)
 echo -e "${YELLOW}=== Package Installation Tests (Optional) ===${NC}"
-echo "Note: These tests require network connectivity"
+echo "Note: These tests are optional and require network connectivity"
 if ping -c 1 8.8.8.8 > /dev/null 2>&1; then
     echo "Network detected, running installation tests..."
     run_test "apt update works" "apt update"
