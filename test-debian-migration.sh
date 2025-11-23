@@ -7,8 +7,12 @@ set -e
 echo "=== Debian Migration Validation Test ==="
 echo ""
 
-PROJECT_ROOT="/home/runner/work/ReTerminal/ReTerminal"
+# Auto-detect project root or use provided path
+PROJECT_ROOT="${PROJECT_ROOT:-$(cd "$(dirname "$0")" && pwd)}"
 FAILED=0
+
+echo "Using project root: $PROJECT_ROOT"
+echo ""
 
 # Test 1: Check that no Alpine references remain (except in git history)
 echo "[Test 1] Checking for remaining Alpine references..."

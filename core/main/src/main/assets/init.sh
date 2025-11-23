@@ -13,9 +13,13 @@ export PS1="\[\e[38;5;46m\]\u\[\033[39m\]@reterm \[\033[39m\]\w \[\033[0m\]\\$ "
 export PIP_BREAK_SYSTEM_PACKAGES=1
 export DEBIAN_FRONTEND=noninteractive
 required_packages="bash nano"
+
+# Get installed packages list once for efficiency
+installed_packages=$(dpkg -l 2>/dev/null)
+
 missing_packages=""
 for pkg in $required_packages; do
-    if ! dpkg -l | grep -q "^ii  $pkg "; then
+    if ! echo "$installed_packages" | grep -q "^ii  $pkg "; then
         missing_packages="$missing_packages $pkg"
     fi
 done

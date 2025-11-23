@@ -61,7 +61,7 @@ class DebianDocumentProvider : DocumentsProvider() {
     override fun queryChildDocuments(
         parentDocumentId: String,
         projection: Array<String>?,
-        sortOrder: String?  // Changed from non-nullable to nullable
+        sortOrder: String?
     ): Cursor {
         val result = MatrixCursor(
             projection
