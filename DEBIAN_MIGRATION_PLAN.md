@@ -55,7 +55,7 @@ This document outlines the complete migration from Alpine Linux to Debian Linux 
 
 ### 7. File Validation (Rootfs.kt)
 - **Changed**: File existence check
-  - `alpine.tar.gz` → `debian.tar.gz`
+  - `alpine.tar.gz` → `debian.tar.xz`
 
 ### 8. Session Management (MkSession.kt)
 - **Changed**: Import statements and working mode checks
